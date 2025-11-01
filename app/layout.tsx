@@ -24,13 +24,14 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
+  attributes:string
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} px-2.5 antialiased w-full min-h-screen bg-background font-sans text-foreground max-w-[1200px] mx-auto`}
       >
-        <ThemeProvider>
+        <ThemeProvider attribute='class' defaultTheme='light'>
           <Nav />
           {children}
           <Footer />

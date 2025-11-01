@@ -8,3 +8,10 @@ export type Product = {
   color: string[],
   image:Record<string, string>
 }
+
+export type ProductInCart = Product & {
+quantity: number,
+selectedColor: string,
+selectedSize?: string,
+
+}

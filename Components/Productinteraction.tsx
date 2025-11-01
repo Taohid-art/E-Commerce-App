@@ -97,7 +97,7 @@ const Productinteraction = ({
        <Link href={`/card`} className='text-white px-4 py-1.5 text-center mt-2 bg-blue-500 rounded  hover:opacity-80  transition-opacity'>
                 <Plus className='inline-block mr-2 h-4 w-4'/>
                  Add to Card</Link>
-         <Link href={`/card`} className='text-white px-4 py-1.5 mt-2 border text-center border-blue-500 rounded  hover:opacity-80  transition-opacity'>
+         <Link href={`/card`} className='text-foreground px-4 py-1.5 mt-2 border text-center border-blue-500 rounded  hover:opacity-80  transition-opacity'>
                  <ShoppingCart className='inline-block mr-2 h-4 w-4'/>
                  Buy this time</Link>
     </div>

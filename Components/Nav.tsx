@@ -16,7 +16,7 @@ const Nav = () => {
         </Link>
         <Bell className='text-foreground' />
         <Cardicon />
-        <Link href='/login' className='bg-blue-500 text-white font-medium text-lg px-3 py-1 rounded-md hover:opacity-80 transition-colors'>Login</Link>
+        <Link href='/login' className='bg-blue-500  text-white font-light text-lg px-3 py-1 rounded-md hover:opacity-80 transition-colors'>Login</Link>
       </div>
     </div>
   )
