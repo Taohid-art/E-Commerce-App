@@ -32,7 +32,7 @@ const Catagory = () => {
   };
 
   return (
-    <div className="w-full bg-gray-800 grid gap-4 grid-cols-6 place-items-center max-md:grid-cols-3 max-sm:grid-cols-2 text-white px-5">
+    <div className="w-full bg-gray-800 grid gap-4 grid-cols-6 place-items-center max-md:grid-cols-3 max-sm:grid-cols-3 text-white px-5">
       {catagoryItems.map((item) => (
         <div
           key={item.name}
