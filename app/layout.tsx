@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/Components/Nav";
 import Footer from "@/Components/Footer";
 import { ThemeProvider } from "@/Components/ThemeProvider";
+import ReduxProveider from "./ReduxProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,9 +33,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} px-2.5 antialiased w-full min-h-screen bg-background font-sans text-foreground max-w-[1200px] mx-auto`}
       >
         <ThemeProvider attribute='class' defaultTheme='light'>
+          <ReduxProveider>
           <Nav />
           {children}
           <Footer />
+            
+          </ReduxProveider>
         </ThemeProvider>
       </body>
     </html>

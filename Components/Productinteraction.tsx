@@ -1,5 +1,7 @@
 "use client";
 import { Product } from "@/app/type";
+import { useAppDispatch } from "@/hooks/ReduxHook";
+import { addToCard } from "@/Features/Card/CardSlice";
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -31,6 +33,8 @@ const Productinteraction = ({
       setquantity((prev) => prev - 1);
     }
   };
+
+  const dispatch = useAppDispatch()
   return (
     <div className="flex flex-col gap-4">
       {/* size Selection */}
@@ -94,7 +98,14 @@ const Productinteraction = ({
           </button>
         </div>
       </div>
-       <Link href={`/card`} className='text-white px-4 py-1.5 text-center mt-2 bg-blue-500 rounded  hover:opacity-80  transition-opacity'>
+       <Link href={`/card`}
+       onClick={()=> dispatch(addToCard({
+         ...product,
+         quantity: quantity,
+         selectedColor: selectedcolor,
+         selectedSize: selectedsize || undefined,
+       }))}
+       className='text-white px-4 py-1.5 text-center mt-2 bg-blue-500 rounded  hover:opacity-80  transition-opacity'>
                 <Plus className='inline-block mr-2 h-4 w-4'/>
                  Add to Card</Link>
          <Link href={`/card`} className='text-foreground px-4 py-1.5 mt-2 border text-center border-blue-500 rounded  hover:opacity-80  transition-opacity'>

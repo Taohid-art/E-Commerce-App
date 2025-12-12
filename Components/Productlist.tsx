@@ -18,8 +18,8 @@ const Productlist = ({props, catagory}:{props:"productpage" | "homepage",catagor
     color: ["Red", "Blue", "Green"],
     image: {
       Red: "https://media.istockphoto.com/id/471188329/photo/plain-red-tee-shirt-isolated-on-white-background.jpg?s=2048x2048&w=is&k=20&c=3ps3kEWGutdggpLGYC1i16HYrguqWU-hw_P9LOQJi-w=",
-      Blue: "https://plus.unsplash.com/premium_photo-1714227363642-36dd630c6c62?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8ZSUyMGNvbW1lcmNlJTIwcHJvZHVjdCUyMHNhbWVpbWFnZSUyMHdpdGglMjBkaWZmZXJudCUyMGNvbG9yfGVufDB8fDB8fHww",
-     Green: "https://media.istockphoto.com/id/471188329/photo/plain-red-tee-shirt-isolated-on-white-background.jpg?s=2048x2048&w=is&k=20&c=3ps3kEWGutdggpLGYC1i16HYrguqWU-hw_P9LOQJi-w=",
+      Blue: "https://media.istockphoto.com/id/465485415/photo/blue-t-shirt-clipping-path.webp?a=1&b=1&s=612x612&w=0&k=20&c=IlqZ3uDmzI-4uMaWZm3jwljVlH5XFGvhcCa0vpJY92k=",
+     Green: "https://media.istockphoto.com/id/1209887384/photo/green-t-shirt-isolated-on-white-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=UWOaSesIHV-sfh8O7jZmwzGBa57OD2TezEy-OQUz5nM=",
     },
   },
   {
@@ -31,8 +31,8 @@ const Productlist = ({props, catagory}:{props:"productpage" | "homepage",catagor
     size: ["One Size"],
     color: ["Black", "White"],
     image: {
-      Black: "https://media.istockphoto.com/id/471188329/photo/plain-red-tee-shirt-isolated-on-white-background.jpg?s=2048x2048&w=is&k=20&c=3ps3kEWGutdggpLGYC1i16HYrguqWU-hw_P9LOQJi-w=",
-      White: "https://plus.unsplash.com/premium_photo-1677995700946-f6ea044f5291?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3QlMjBzYW1laW1hZ2UlMjB3aXRoJTIwZGlmZmVybnQlMjBjb2xvcnxlbnwwfHwwfHx8MA%3D%3D"
+      Black: "https://images.unsplash.com/photo-1600086827875-a63b01f1335c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmxhY2slMjBibHVldG9vdGh8ZW58MHx8MHx8fDA%3D",
+      White: "https://images.unsplash.com/photo-1765279327575-bc9e453514dd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fHdoaXRlJTIwYmx1ZXRvb3RofGVufDB8fDB8fHww"
     },
   },
   {
@@ -42,11 +42,10 @@ const Productlist = ({props, catagory}:{props:"productpage" | "homepage",catagor
     price: 299,
     catagory: "furnitures",
     size: ["6ft x 3ft", "5ft x 3ft"],
-    color: ["Brown", "Dark Oak"],
+    color: ["Brown", "Dark"],
     image: {
-      Brown: "https://media.istockphoto.com/id/471188329/photo/plain-red-tee-shirt-isolated-on-white-background.jpg?s=2048x2048&w=is&k=20&c=3ps3kEWGutdggpLGYC1i16HYrguqWU-hw_P9LOQJi-w=",
-      side: "https://example.com/images/wooden-dining-table-side.jpg",
-      back: "https://plus.unsplash.com/premium_photo-1750507177869-c1a2a359c3ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZSUyMGNvbW1lcmNlJTIwcHJvZHVjdCUyMHNhbWVpbWFnZSUyMHdpdGglMjBkaWZmZXJudCUyMGNvbG9yfGVufDB8fDB8fHww",
+      Brown: 'https://plus.unsplash.com/premium_photo-1744839107720-281b527a37d9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njh8fHdoaXRlJTIwV29vZGVuJTIwRGluaW5nJTIwVGFibGV8ZW58MHx8MHx8fDA%3D',
+      Dark: 'https://plus.unsplash.com/premium_photo-1723672857304-36018af85340?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fFdvb2RlbiUyMERpbmluZyUyMFRhYmxlJTIwYmxhY2t8ZW58MHx8MHx8fDA%3D'
     },
   },
   {

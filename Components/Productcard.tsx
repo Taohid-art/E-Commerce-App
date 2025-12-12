@@ -4,8 +4,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCart } from 'lucide-react';
 import { useState } from 'react';
+import { useAppDispatch } from '@/hooks/ReduxHook';
+import { addToCard } from '@/Features/Card/CardSlice';
 
 const productcard = ({products}:{products:Product}) => {
+  const dispatch = useAppDispatch();
   const item = products
   const handlechange=(value: string,type:"color"| "size")=>{
     setproducttype((prev)=>({
@@ -46,9 +49,14 @@ const productcard = ({products}:{products:Product}) => {
                 </div>
                <div className='flex justify-between items-center'>
                 <span className='text-lg font-bold text-foreground'>${item.price.toFixed(2)}</span>
-                 <Link href={`/card`} className='text-white text-center px-4 py-1.5 mt-2 bg-blue-500 rounded  hover:opacity-80  transition-opacity'>
+                 <button onClick={()=> dispatch(addToCard({
+                  ...item,
+                  selectedColor:producttype.color,
+                  selectedSize:producttype.size,
+                  quantity:1
+                 }))}  className='text-white text-center px-4 py-1.5 mt-2 bg-blue-500 rounded  hover:opacity-80  transition-opacity'>
                  <ShoppingCart className='inline-block mr-2 h-4 w-4'/>
-                 Add to Card</Link>
+                 Add to Card</button>
                </div>
                 </div>
             </div>

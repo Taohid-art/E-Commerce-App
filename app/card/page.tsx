@@ -9,10 +9,19 @@ import ShippingForm from "@/Components/ShippingForm";
 import { useState } from "react";
 import { Shippingfrominput } from "@/app/type";
 import PaymentForm from "@/Components/PaymentForm";
+import { useAppDispatch, useAppSelector } from "@/hooks/ReduxHook";
+import { useDispatch } from "react-redux";
+import { removeFormCard } from "@/Features/Card/CardSlice";
 
 const Page = () => {
   const search = useSearchParams();
   const router = useRouter();
+  const TotalPrice = useAppSelector((state) => state.card.totalPrice)
+  const dispatch = useAppDispatch();
+   
+  // select the cart items from the Redux store
+  const productsInCart: ProductInCart[] = useAppSelector((state) => state.card.items);
+  
 
   const activeStep = parseInt(search.get("step") || "1");
 
@@ -26,41 +35,9 @@ const Page = () => {
   
   ];
 
-  const cartproducts: ProductInCart[] = [
-    {
-      id: 1,
-      name: "Men's Casual Shirt",
-      description: "A comfortable cotton shirt perfect for daily wear.",
-      price: 25,
-      catagory: "clothes",
-      size: ["S", "M", "L", "XL"],
-      color: ["Red", "Blue", "Green"],
-      image: {
-        Red: "https://media.istockphoto.com/id/471188329/photo/plain-red-tee-shirt-isolated-on-white-background.jpg",
-        Blue: "https://plus.unsplash.com/premium_photo-1714227363642-36dd630c6c62",
-        Green: "https://media.istockphoto.com/id/471188329/photo/plain-red-tee-shirt-isolated-on-white-background.jpg",
-      },
-      quantity: 1,
-      selectedColor: "Red",
-      selectedSize: "XL",
-    },
-    {
-      id: 2,
-      name: "Wireless Bluetooth Headphones",
-      description: "Noise-cancelling headphones with 20-hour battery life.",
-      price: 99,
-      catagory: "electronics",
-      size: ["One Size"],
-      color: ["Black", "White"],
-      image: {
-        Black: "https://media.istockphoto.com/id/471188329/photo/plain-red-tee-shirt-isolated-on-white-background.jpg",
-        White: "https://plus.unsplash.com/premium_photo-1677995700946-f6ea044f5291",
-      },
-      quantity: 1,
-      selectedColor: "Black",
-      selectedSize: "One Size",
-    },
-  ];
+  const cartproducts = productsInCart;
+  
+  
 
   return (
     <div>
@@ -98,7 +75,7 @@ const Page = () => {
                   key={product.id}
                   className="flex justify-between items-center border-b-1 py-2 gap-4"
                 >
-                  <Link href={`/products/${product.id}`}>
+                  <Link href={`/products/${product.id}?size=${product.selectedSize}&color=${product.selectedColor}`} className="flex gap-4 max-md:flex-col">
                     <div className="flex items-center max-md:justify-between gap-4">
                       <Image
                         src={product.image[product.selectedColor]}
@@ -126,7 +103,7 @@ const Page = () => {
 
                   <div className="flex gap-2 max-md:flex-col justify-between items-center">
                     <span className="font-medium">${product.price}</span>
-                    <Trash2 className="cursor-pointer text-red-500 px-1.5 py-1 text-xl h-9 w-9 rounded-2xl hover:bg-red-300" />
+                    <Trash2 className="cursor-pointer text-red-500 px-1.5 py-1 text-xl h-9 w-9 rounded-2xl hover:bg-red-300"  onClick={ () => dispatch(removeFormCard({id:product.id,selectedColor:product.selectedColor,selectedSize:product.selectedSize}))}/>
                   </div>
                 </div>
               ))}
@@ -159,7 +136,7 @@ const Page = () => {
           </div>
           <div className="mt-2 flex justify-between gap-4 font-bold">
             <span>Total:</span>
-            <span>$108.00</span>
+            <span>{TotalPrice.toFixed(2)}</span>
           </div>
 
           {activeStep === 1 && (
