@@ -5,6 +5,8 @@ import Nav from "@/Components/Nav";
 import Footer from "@/Components/Footer";
 import { ThemeProvider } from "@/Components/ThemeProvider";
 import ReduxProveider from "./ReduxProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +39,7 @@ export default function RootLayout({
           <Nav />
           {children}
           <Footer />
-            
+          <ToastContainer position="top-center" />
           </ReduxProveider>
         </ThemeProvider>
       </body>

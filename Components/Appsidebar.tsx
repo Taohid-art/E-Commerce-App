@@ -11,9 +11,11 @@ import {
   SidebarMenuItem,
 } from "@/Components/ui/sidebar"
 import Link from "next/link"
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet"
 import { Input } from "./ui/input"
 import { Label } from "recharts"
+import AddproductForm from "./AddproductForm"
+import { ScrollArea } from "@/Components/ui/scroll-area"
 
 // Menu items.
 const items = [
@@ -86,19 +88,13 @@ export function AppSidebar() {
                         Add Product
                       </SidebarMenuButton>
                     </SheetTrigger>
-                    <SheetContent >
-                      
-        <div className="grid flex-1 auto-rows-min gap-6 px-4">
-          <div className="grid gap-3">
-            <label htmlFor="sheet-demo-name">Name</label>
-            <Input id="sheet-demo-name" defaultValue="Pedro Duarte" />
-          </div>
-          <div className="grid gap-3">
-            <label htmlFor="sheet-demo-username">Username</label>
-            <Input id="sheet-demo-username" defaultValue="@peduarte" />
-          </div>
-        </div>
-
+                    <SheetContent className="w-full min-h-screen overflow-hidden sm:w-[480px] ">
+                      <ScrollArea className="h-screen overflow-hidden" >
+                      <SheetHeader>
+                        <SheetTitle>Add Your Product</SheetTitle>
+                      </SheetHeader>
+                         <AddproductForm />
+                      </ScrollArea>
                     </SheetContent>
                   </Sheet>
                 </SidebarMenuButton>

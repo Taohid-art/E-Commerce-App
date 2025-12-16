@@ -10,18 +10,20 @@ import { useState } from "react";
 import { Shippingfrominput } from "@/app/type";
 import PaymentForm from "@/Components/PaymentForm";
 import { useAppDispatch, useAppSelector } from "@/hooks/ReduxHook";
-import { useDispatch } from "react-redux";
 import { removeFormCard } from "@/Features/Card/CardSlice";
+import { toast } from "react-toastify";
 
 const Page = () => {
   const search = useSearchParams();
   const router = useRouter();
-  const TotalPrice = useAppSelector((state) => state.card.totalPrice)
   const dispatch = useAppDispatch();
    
   // select the cart items from the Redux store
   const productsInCart: ProductInCart[] = useAppSelector((state) => state.card.items);
-  
+  // derive totals from items to avoid stale persisted totals
+  const Subtotal = productsInCart.reduce((sum, p) => sum + p.price * p.quantity, 0);
+  const Tax = Subtotal * 0.08; // example 8% tax
+  const Total = Subtotal + Tax;
 
   const activeStep = parseInt(search.get("step") || "1");
 
@@ -103,7 +105,7 @@ const Page = () => {
 
                   <div className="flex gap-2 max-md:flex-col justify-between items-center">
                     <span className="font-medium">${product.price}</span>
-                    <Trash2 className="cursor-pointer text-red-500 px-1.5 py-1 text-xl h-9 w-9 rounded-2xl hover:bg-red-300"  onClick={ () => dispatch(removeFormCard({id:product.id,selectedColor:product.selectedColor,selectedSize:product.selectedSize}))}/>
+                    <Trash2 className="cursor-pointer text-red-500 px-1.5 py-1 text-xl h-9 w-9 rounded-2xl hover:bg-red-300"  onClick={ () =>{ dispatch(removeFormCard({id:product.id,selectedColor:product.selectedColor,selectedSize:product.selectedSize})); toast.error('Product deleted from card')  }}/>
                   </div>
                 </div>
               ))}
@@ -128,15 +130,15 @@ const Page = () => {
           <h2 className="text-md font-medium">Cart Details</h2>
           <div className="mt-4 flex justify-between gap-4">
             <span>Subtotal:</span>
-            <span>$100.00</span>
+            <span>${Subtotal.toFixed(2)}</span>
           </div>
           <div className="mt-2 flex justify-between gap-4">
             <span>Tax:</span>
-            <span>$8.00</span>
+            <span>${Tax.toFixed(2)}</span>
           </div>
           <div className="mt-2 flex justify-between gap-4 font-bold">
             <span>Total:</span>
-            <span>{TotalPrice.toFixed(2)}</span>
+            <span>${Total.toFixed(2)}</span>
           </div>
 
           {activeStep === 1 && (

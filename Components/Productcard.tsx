@@ -6,8 +6,10 @@ import { ShoppingCart } from 'lucide-react';
 import { useState } from 'react';
 import { useAppDispatch } from '@/hooks/ReduxHook';
 import { addToCard } from '@/Features/Card/CardSlice';
+import { toast } from 'react-toastify';
 
 const productcard = ({products}:{products:Product}) => {
+  const [loading, setLoading] = useState(false)
   const dispatch = useAppDispatch();
   const item = products
   const handlechange=(value: string,type:"color"| "size")=>{
@@ -49,14 +51,23 @@ const productcard = ({products}:{products:Product}) => {
                 </div>
                <div className='flex justify-between items-center'>
                 <span className='text-lg font-bold text-foreground'>${item.price.toFixed(2)}</span>
-                 <button onClick={()=> dispatch(addToCard({
+                 <button
+                 disabled = {loading}
+                 onClick={()=>{ 
+                  if(loading) return;
+                  setLoading(true);
+                  dispatch(addToCard({
                   ...item,
                   selectedColor:producttype.color,
                   selectedSize:producttype.size,
                   quantity:1
-                 }))}  className='text-white text-center px-4 py-1.5 mt-2 bg-blue-500 rounded  hover:opacity-80  transition-opacity'>
+                 }))
+                 toast.success('Product added to cart');
+                 setTimeout(() => setLoading(false),500);
+
+                 } }  className='text-white text-center px-4 py-1.5 mt-2 bg-blue-500 rounded  hover:opacity-80  transition-opacity'>
                  <ShoppingCart className='inline-block mr-2 h-4 w-4'/>
-                 Add to Card</button>
+                {loading ? "Adding" : "Add to Card"} </button>
                </div>
                 </div>
             </div>
