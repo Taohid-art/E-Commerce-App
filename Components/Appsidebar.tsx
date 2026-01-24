@@ -12,8 +12,6 @@ import {
 } from "@/Components/ui/sidebar"
 import Link from "next/link"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet"
-import { Input } from "./ui/input"
-import { Label } from "recharts"
 import AddproductForm from "./AddproductForm"
 import { ScrollArea } from "@/Components/ui/scroll-area"
 

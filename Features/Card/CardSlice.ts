@@ -1,9 +1,7 @@
 import { createSlice , PayloadAction} from "@reduxjs/toolkit";
 import { ProductInCart } from "@/app/type";
-import { string } from "zod";
-import { it } from "node:test";
 
-interface cardState  {
+export interface cardState  {
     items : ProductInCart[],
     totalQuantity: number,
     totalPrice: number
@@ -21,7 +19,7 @@ const CardSlice = createSlice({
     initialState,
     reducers:{
         addToCard: (state , action:PayloadAction<ProductInCart>) => {
-            const {id, name, price, selectedColor, selectedSize, quantity} = action.payload;
+            const {id, price, selectedColor, selectedSize, quantity} = action.payload;
             const existingItem = state.items.find(item => item.id === id && item.selectedColor === selectedColor && item.selectedSize === selectedSize);
             if (existingItem) {
                 existingItem.quantity += quantity;

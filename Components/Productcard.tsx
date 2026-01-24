@@ -8,7 +8,7 @@ import { useAppDispatch } from '@/hooks/ReduxHook';
 import { addToCard } from '@/Features/Card/CardSlice';
 import { toast } from 'react-toastify';
 
-const productcard = ({products}:{products:Product}) => {
+const Productcard = ({products}:{products:Product}) => {
   const [loading, setLoading] = useState(false)
   const dispatch = useAppDispatch();
   const item = products
@@ -76,4 +76,4 @@ const productcard = ({products}:{products:Product}) => {
   )
 }
 
-export default productcard
+export default Productcard

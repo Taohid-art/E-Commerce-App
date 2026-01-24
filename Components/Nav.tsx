@@ -1,6 +1,6 @@
 import React from 'react'
 import Searchbar from './Searchbar'
-import{ Bell, Home,  ShoppingCart} from 'lucide-react'
+import{ Bell, Home } from 'lucide-react'
 import Link from 'next/link'
 import Cardicon from './Cardicon'
 import ThemeToggle from './ThemeToggole'

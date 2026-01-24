@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import CardReducer from "@/Features/Card/CardSlice";
 import { loadCard, saveCard } from "@/persist/cardPersist";
+import { ProductInCart } from "@/app/type";
 
 // load and normalize persisted cart to avoid stale totals
 const loaded = loadCard();
@@ -8,11 +9,11 @@ const normalized = loaded
   ? {
       ...loaded,
       totalQuantity: Array.isArray(loaded.items)
-        ? loaded.items.reduce((sum: number, i: any) => sum + (i?.quantity || 0), 0)
+        ? loaded.items.reduce((sum: number, i: ProductInCart) => sum + (i?.quantity || 0), 0)
         : 0,
       totalPrice: Array.isArray(loaded.items)
         ? loaded.items.reduce(
-            (sum: number, i: any) => sum + (i?.price || 0) * (i?.quantity || 0),
+            (sum: number, i: ProductInCart) => sum + (i?.price || 0) * (i?.quantity || 0),
             0
           )
         : 0,

@@ -55,14 +55,14 @@ const colors = [
 const formSchema = z.object({
   productName: z.string().min(1, "Product name is required"),
   description: z.string().min(1, "Description is required"),
-  price: z.number().min(0, "Price must be positive"),
+  price: z.string().min(1, "Price must be positive"),
   category: z.enum(categoryOptions),
 
   size: z.array(z.enum(sizes)).min(1, "Select at least one size"),
   color: z.array(z.enum(colors)).min(1, "Select at least one color"),
 
-  // images[color] = image URL
-  images: z.record(z.enum(colors),z.string().url("Valid image URL required")),
+  // images[color] = image file
+  images: z.record(z.enum(colors), z.custom((val) => val instanceof FileList, "Must select a file")),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -80,7 +80,7 @@ const AddproductForm = () => {
     defaultValues: {
       size: [],
       color: [],
-      images: {},
+      
     },
   });
 
@@ -88,6 +88,8 @@ const AddproductForm = () => {
 
   const onSubmit = (data: FormData) => {
     console.log("FORM DATA 👉", data);
+    console.log(errors);
+    
   };
 
   return (
@@ -227,7 +229,7 @@ const AddproductForm = () => {
                   <input
                     type="file"
                     className="w-full border rounded-md p-2"
-                    placeholder={`Image URL for ${clr}`}
+                    placeholder={`Image for ${clr}`}
                     {...register(`images.${clr}`)}
                   />
 
@@ -245,7 +247,8 @@ const AddproductForm = () => {
         {/* ---------------- SUBMIT ---------------- */}
         <button
           type="submit"
-          className="bg-black text-white px-6 py-2 rounded-md"
+          onClick={()=> console.log("cliked")}
+          className="bg-blue-500 text-white px-6 py-2 rounded-md"
         >
           Add Product
         </button>

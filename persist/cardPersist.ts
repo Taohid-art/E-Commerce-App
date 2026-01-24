@@ -1,3 +1,5 @@
+import { cardState } from "@/Features/Card/CardSlice";
+
 export const loadCard = ()=> {
   if (typeof window === 'undefined') {
     return undefined;
@@ -12,7 +14,7 @@ export const loadCard = ()=> {
     return undefined;
   }
 }
-export const saveCard = ( cardData : any) => {
+export const saveCard = ( cardData : cardState) => {
   if (typeof window === 'undefined')
     return undefined;
   try{

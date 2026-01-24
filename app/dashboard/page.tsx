@@ -1,9 +1,9 @@
-import { Sidebar } from '@/Components/ui/sidebar'
+
 import Appbarchart from '@/Components/Appbarchart'
 import Piechart from '@/Components/Piechart'
 import Areachart from '@/Components/Areachart'
 import React from 'react'
-import { Area } from 'recharts'
+
 import LatestTransaction from '@/Components/LatestTransaction'
 
 const page = () => {

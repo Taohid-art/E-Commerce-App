@@ -12,7 +12,7 @@ const PaymentForm = () => {
     })
   return (
     <div>
-      <form action="" className='w-96 shadow-md shadow-gray-700 p-6 rounded max-md:w-full' onSubmit={handleSubmit((data)=>{
+      <form action="" className='w-96 shadow-md shadow-gray-700 p-6 rounded max-md:w-full' onSubmit={handleSubmit(()=>{
         
         router.push("/card?step=4")
         
