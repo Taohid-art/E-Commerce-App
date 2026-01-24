@@ -6,14 +6,14 @@ import { ProductInCart } from "../type";
 import Image from "next/image";
 import Link from "next/link";
 import ShippingForm from "@/Components/ShippingForm";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Shippingfrominput } from "@/app/type";
 import PaymentForm from "@/Components/PaymentForm";
 import { useAppDispatch, useAppSelector } from "@/hooks/ReduxHook";
 import { removeFormCard } from "@/Features/Card/CardSlice";
 import { toast } from "react-toastify";
 
-const Page = () => {
+const CardPageInner = () => {
   const search = useSearchParams();
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -179,5 +179,11 @@ const Page = () => {
     </div>
   );
 };
+
+const Page = () => (
+  <Suspense fallback={<div />}> 
+    <CardPageInner />
+  </Suspense>
+);
 
 export default Page;

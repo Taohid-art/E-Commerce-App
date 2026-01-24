@@ -3,6 +3,14 @@ import Productinteraction from '@/Components/Productinteraction';
 import Image from 'next/image'
 import React from 'react'
 
+export async function generateMetadata({params}:{params:Promise<{id:string}>}) {
+  const id = (await params).id;
+ return {
+    title: `Product ${id}`,
+    description: `Details of product ${id}`,
+ }
+} 
+
 const page = async  ({searchParams}:{searchParams:Promise<{color:string,size:string}>}) => {
   const {color,size} = await searchParams as {color:string,size:string};
     const product:Product = {

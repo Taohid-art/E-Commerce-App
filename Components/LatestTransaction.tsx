@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils";
 
 
 const LatestTransaction = () => {
-  const transactions = [
+  type TransactionStatus = "Completed" | "Pending" | "Failed";
+  const transactions: { id: string; user: string; date: string; amount: string; status: TransactionStatus }[] = [
     { id: "TXN001", user: "John Doe", date: "2024-06-01", amount: "$250.00", status: "Completed" },
     { id: "TXN002", user: "Jane Smith", date: "2024-06-02", amount: "$150.00", status: "Pending" },
     { id: "TXN003", user: "Alice Johnson", date: "2024-06-03", amount: "$300.00", status: "Failed" },
@@ -15,7 +16,7 @@ const LatestTransaction = () => {
 
   ];
 
-  const getStatusColor = (status: "Completed" | "Pending" | "Failed") => {
+  const getStatusColor = (status: TransactionStatus) => {
     switch (status) {
       case "Completed":
         return "bg-green-500/20 text-green-600 border-green-500";
